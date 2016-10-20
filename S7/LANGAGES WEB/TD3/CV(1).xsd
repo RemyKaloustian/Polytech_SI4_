@@ -1,0 +1,108 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="cv">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="titre"/>
+        <xs:element type="xs:string" name="cvnom"/>
+        <xs:element name="etatcivil">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="nom"/>
+              <xs:element type="xs:string" name="prenom"/>
+              <xs:element type="xs:string" name="naissance"/>
+              <xs:element type="xs:string" name="situation"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="formations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="formation">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="date-iso"/>
+                      <xs:attribute type="xs:short" name="date"/>
+                      <xs:attribute type="xs:short" name="datefin"/>
+                      <xs:attribute type="xs:string" name="intitule"/>
+                      <xs:attribute type="xs:string" name="description"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="connaissances">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="technique">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:byte" name="type"/>
+                      <xs:attribute type="xs:string" name="nom"/>
+                      <xs:attribute type="xs:string" name="description"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="langue">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="nom"/>
+                      <xs:attribute type="xs:string" name="niveau"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="professionnel">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="experience">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="missions">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="mission"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="environnement">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="technique" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:byte" name="type" use="optional"/>
+                                  <xs:attribute type="xs:string" name="nom" use="optional"/>
+                                  <xs:attribute type="xs:string" name="description" use="optional"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute type="xs:short" name="date-iso"/>
+                  <xs:attribute type="xs:string" name="date"/>
+                  <xs:attribute type="xs:string" name="datefin"/>
+                  <xs:attribute type="xs:string" name="client"/>
+                  <xs:attribute type="xs:string" name="entreprise"/>
+                  <xs:attribute type="xs:string" name="fonction"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

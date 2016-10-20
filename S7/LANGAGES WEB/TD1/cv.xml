@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cv xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:xsdLocation="cv.xsd">
+    <titre>Meilleur CV du monde</titre>
+    <cvnom>Meilleur nom du monde</cvnom>
+
+    <etatcivil>
+        <nom>Kaloustian</nom>
+        <prenom>Rémy</prenom>
+        <naissance>18/07/1995</naissance>
+        <situation>étudiant</situation>
+    </etatcivil>
+
+    <formations>
+        <formation date-iso="2013-09-15" date="2013" datefin="2015" intitule="DUT info" description="formation informatique bac+2"> </formation>
+    </formations>
+
+    <connaissances>
+        <technique type="3" nom="c#" description="langage objet"></technique>
+        <technique type="4" nom="HTML/CSS" description="langage web"></technique>
+        <langue nom="anglais" niveau="bon à l'écrit et à l'oral"></langue>
+    </connaissances>
+
+    <professionnel>
+        <experience date-iso="2015-04-18" date ="2015" datefin="2015" entreprise="Winsiders" fonction="game developer">
+            <missions>
+                <mission>Développer un jeu</mission>
+                <mission>Communiquer avec les designers</mission>
+            </missions>
+            <environnement>
+                <technique type="4" nom="Unity" description="Moteur de jeu"></technique>
+            </environnement>
+        </experience>
+    </professionnel>
+
+</cv>

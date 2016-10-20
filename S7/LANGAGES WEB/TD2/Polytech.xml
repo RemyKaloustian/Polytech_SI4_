@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<polytech>
+    <salles>
+        <salle id="1234">
+            <batiment>str1234</batiment>
+            <numero>1234</numero>
+            <places>1234</places>
+        </salle>
+    </salles>
+    <etudiants>
+        <etudiant id="1234">
+            <etatcivil>
+                <nom>str1234</nom>
+                <prenom>str1234</prenom>
+                <adresse>str1234</adresse>
+                <naissance>2012-12-13</naissance>
+                <email>str1234</email>
+                <telephone>str1234</telephone>
+                <codepostal>str1234</codepostal>
+                <infos>
+                    <info nom="str1234">str1234</info>
+                </infos>
+            </etatcivil>
+            <provenance>str1234</provenance>
+        </etudiant>
+    </etudiants>
+    <enseignants>
+        <enseignant id="1234">
+            <etatcivil>
+                <nom>str1234</nom>
+                <prenom>str1234</prenom>
+                <adresse>str1234</adresse>
+                <naissance>2012-12-13</naissance>
+                <email>str1234</email>
+                <telephone>str1234</telephone>
+                <codepostal>str1234</codepostal>
+                <infos>
+                    <info nom="str1234">str1234</info>
+                </infos>
+            </etatcivil>
+        </enseignant>
+    </enseignants>
+    <annee num="1234">
+        <UE nuemro="???" ects="???">
+            <facultatifs>
+                <enseignements>
+                    <enseignement nom="???" duree="???" ects="???" premiereseance="???" derniereseance="???">
+                        <enseignants>
+                            <enseignant id="1234">
+                                <etatcivil>
+                                    <nom>str1234</nom>
+                                    <prenom>str1234</prenom>
+                                    <adresse>str1234</adresse>
+                                    <naissance>2012-12-13</naissance>
+                                    <email>str1234</email>
+                                    <telephone>str1234</telephone>
+                                    <codepostal>str1234</codepostal>
+                                    <infos>
+                                        <info nom="str1234">str1234</info>
+                                    </infos>
+                                </etatcivil>
+                            </enseignant>
+                        </enseignants>
+                        <etudiants>
+                            <etudiant id="1234">
+                                <etatcivil>
+                                    <nom>str1234</nom>
+                                    <prenom>str1234</prenom>
+                                    <adresse>str1234</adresse>
+                                    <naissance>2012-12-13</naissance>
+                                    <email>str1234</email>
+                                    <telephone>str1234</telephone>
+                                    <codepostal>str1234</codepostal>
+                                    <infos>
+                                        <info nom="str1234">str1234</info>
+                                    </infos>
+                                </etatcivil>
+                                <provenance>str1234</provenance>
+                            </etudiant>
+                        </etudiants>
+                        <responsable>str1234</responsable>
+                        <email>str1234</email>
+                        <resume>str1234</resume>
+                        <salles>
+                            <salle id="1234">
+                                <batiment>str1234</batiment>
+                                <numero>1234</numero>
+                                <places>1234</places>
+                            </salle>
+                        </salles>
+                    </enseignement>
+                </enseignements>
+            </facultatifs>
+            <enseignements>
+                <enseignement nom="???" duree="???" ects="???" premiereseance="???" derniereseance="???">
+                    <enseignants>
+                        <enseignant id="1234">
+                            <etatcivil>
+                                <nom>str1234</nom>
+                                <prenom>str1234</prenom>
+                                <adresse>str1234</adresse>
+                                <naissance>2012-12-13</naissance>
+                                <email>str1234</email>
+                                <telephone>str1234</telephone>
+                                <codepostal>str1234</codepostal>
+                                <infos>
+                                    <info nom="str1234">str1234</info>
+                                </infos>
+                            </etatcivil>
+                        </enseignant>
+                    </enseignants>
+                    <etudiants>
+                        <etudiant id="1234">
+                            <etatcivil>
+                                <nom>str1234</nom>
+                                <prenom>str1234</prenom>
+                                <adresse>str1234</adresse>
+                                <naissance>2012-12-13</naissance>
+                                <email>str1234</email>
+                                <telephone>str1234</telephone>
+                                <codepostal>str1234</codepostal>
+                                <infos>
+                                    <info nom="str1234">str1234</info>
+                                </infos>
+                            </etatcivil>
+                            <provenance>str1234</provenance>
+                        </etudiant>
+                    </etudiants>
+                    <responsable>str1234</responsable>
+                    <email>str1234</email>
+                    <resume>str1234</resume>
+                    <salles>
+                        <salle id="1234">
+                            <batiment>str1234</batiment>
+                            <numero>1234</numero>
+                            <places>1234</places>
+                        </salle>
+                    </salles>
+                </enseignement>
+            </enseignements>
+        </UE>
+        <etudiants>
+            <etudiant id="1234">
+                <etatcivil>
+                    <nom>str1234</nom>
+                    <prenom>str1234</prenom>
+                    <adresse>str1234</adresse>
+                    <naissance>2012-12-13</naissance>
+                    <email>str1234</email>
+                    <telephone>str1234</telephone>
+                    <codepostal>str1234</codepostal>
+                    <infos>
+                        <info nom="str1234">str1234</info>
+                    </infos>
+                </etatcivil>
+                <provenance>str1234</provenance>
+            </etudiant>
+        </etudiants>
+        <stage duree="???">
+            <intitule>str1234</intitule>
+            <responsable>str1234</responsable>
+        </stage>
+        <responsable />
+    </annee>
+</polytech>

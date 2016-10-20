@@ -1,0 +1,37 @@
+const N= 3
+range T=0..N
+set VarAlpha={value.{read[T], write[T], acquire, release}}
+
+VAR1=VAR[0],
+
+//u:T comme le paramètre u de type T, 
+VAR[u:T]=( read[u]->VAR[u]
+			|write[v:T]->VAR[v]),
+
+DISPLAY=(read[u:T]->DISPLAY)+{write[T]}.
+
+TURNSTILE = (go ->RUN),
+RUN=(arrive->INCREMENT
+|end -> TURNSTILE),
+
+INCREMENT=(value.read[a:T] -> write[(a+1)%(N+1)]->RUN)+VarAlpha.
+
+|| GARDEN =(east:TURNSTILE
+			|| west:TURNSTILE
+			||{east,west}::value:VAR1
+			||{east, west, display}::value:DISPLAY)/{go/ {east, west}.go, end / {east,west}.end}.
+
+//PREUVE
+
+TEST = TEST[0],
+TEST[v:T] = ({east,west}.arrive->TEST[(v+1)%(N+1)]
+			|end->CHECK[v]),
+
+CHECK[v:T] = (display.value.read[u:T] -> //variable commune lecture, u est le nb d'arrivée compté
+		(when (u==v) right ->TEST[v]
+		|when (u!=v) wrong -> ERROR)
+		)+display.{VarAlpha}}.
+
+||TESTGARDEN =(GARDEN||PREUVE),
+
+

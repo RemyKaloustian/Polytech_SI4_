@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Introduction to Turing Machines</TITLE>
+   <META NAME="Author" CONTENT="Cristian Cheran">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY>
+
+<CENTER><P><B><FONT SIZE=+1>Introduction to Turing Machines and Visual
+Turing.</FONT></B></P></CENTER>
+
+<UL>
+<UL>
+<P><B><FONT SIZE=+1>What is a Turing Machine ?</FONT></B></P>
+</UL>
+
+<DD>A Turing Machine consists of a tape with a left boundary and infinite
+to the right side, filled with symbols - one symbol at one position - having
+a head that can read or write symbols or move at left or right. The symbols
+are the blank &quot;#&quot; and &quot;user-defined&quot; - in Visual Turing
+you can use letters as symbols.</DD>
+</UL>
+
+<CENTER><DD><IMG SRC="fig1.gif" HEIGHT=100 WIDTH=400></DD></CENTER>
+
+<UL>
+<DD>The way the head moves or writes symbols is determined by his &quot;program&quot;,
+a graph with instructions as nodes - there are some special instructions
+like <B>L</B>-moves the head to left, <B>R-</B>moves the head to right,
+the &quot;symbol-instruction&quot;- writes a mentioned symbol at the current
+position and the &quot;variable instruction&quot; - writes the value contained
+by a variable at the current position. The lines link the nodes and determine
+the execution path. They are entitled with some conditions meaning that,
+if the condition is true, the execution path will go on that line's way
+to the destination node. A condition is true if the symbol from the position
+of the head can be found in any right operand of the condition.</DD>
+
+<DD>One of the most important thing are the variables. They have the same
+meaning as in the programming languages- they contain values. The variables
+can be written on the tape or can be loaded in the following way: when
+a variable is mentioned in a condition as the left operand- inducing the
+attribution idea -, if the condition is true, at one moment of the execution,
+the variable gets the value from the position of the head - the symbols
+read by the head. The Greek symbols are used for variables.</DD>
+</UL>
+
+<CENTER><DD><IMG SRC="fig2.gif" HEIGHT=152 WIDTH=341><BR>
+<FONT SIZE=-1>A simple program that moves once to right then to left while
+the read symbol is <B>a.</B> The alpha variable is loaded with the read
+symbol</FONT></DD></CENTER>
+
+<UL>
+<DD>In the expression of the condition can be used the negation - meaning
+if the read symbol is different from any symbol in the condition the execution
+goes by there - and loads the variable if there is one as the left operand.</DD>
+
+<DD>There can be even other machines mentioned as instructions - for example
+the classical <B>L# </B>which scans the tape to the left until it finds
+the first # it can be placed on the graph as any other instruction and
+is executed in this way - something like a procedure on function in C or
+Pascal.</DD>
+
+<DD>There are many computations that can be made with a Turing machine:
+addition, substraction, multiplication or string operations like copying
+or shifting - most of those computations can be found in the examples coming
+with Visual Turing. </DD>
+
+<UL>
+<P><B><FONT SIZE=+1>What is Visual Turing ?</FONT></B></P>
+</UL>
+
+<DD><B>Visual Turing</B> is a tool which helps you to develop Turing Machines.
+It is supported the entire process of the development, from the designing
+of the graph- the &quot;program&quot; of the machine, which is made fully
+visual, to the editing of the tape and running being available the options
+of the most development tools - running, stepping in, stepping out and
+over and, a special feature of Visual Turing, stepping back - the reverse
+execution.</DD>
+
+<DD>Go to <A HREF="contents.htm">contents</A> to see almost all the things
+about Visual Turing.</DD>
+</UL>
+
+</BODY>
+</HTML>

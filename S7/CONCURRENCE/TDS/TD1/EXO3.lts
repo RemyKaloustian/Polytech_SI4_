@@ -1,0 +1,27 @@
+
+MACHINE = (mettre10->METTRE20
+ 	|mettre20 ->METTRE10
+	|mettre50-> RENDRE20),
+
+METTRE10 = (mettre10-> CHOIX
+|mettre20-> RENDRE10
+|mettre50-> RENDRE40),
+
+METTRE20=(mettre10 ->METTRE10
+|mettre20->CHOIX
+|mettre50-> RENDRE30),
+
+RENDRE10 =( rendre10-> CHOIX),
+
+RENDRE20=(rendre10-> RENDRE10
+|rendre20-> CHOIX),
+
+RENDRE30=(rendre10->RENDRE20
+|rendre20-> rendre10),
+
+RENDRE40=(rendre10->RENDRE30
+|rendre20->RENDRE20),
+
+CHOIX=(k->MACHINE
+t-> MACHINE
+c->MACHINE).

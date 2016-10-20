@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   
+    <!--Racine et contenu du fichier-->
+    <xs:element name="polytech">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="salles" type="sallesType"/>
+                <xs:element name="etudiants" type="etudiantsType"/>
+                <xs:element name="enseignants" type="enseignantsType"/>
+                <xs:element name="annee" type="anneeType"/>
+            </xs:sequence>
+        </xs:complexType>
+        
+        <!--Clés référencées pour respecter les contraintes d'intégrité-->
+        
+        <xs:key name="enseignantKey">
+            <xs:selector xpath="enseignants/enseignant"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+
+        <xs:keyref name="enseignant" refer="enseignantKey">
+            <xs:selector xpath="annee/UE/enseignements/enseignement/enseignants/enseignant"/>
+            <xs:field xpath="@id"/>
+        </xs:keyref>
+        
+        <xs:keyref name="enseignant2" refer="enseignantKey">
+            <xs:selector xpath="annee/UE/facultatifs/enseignements/enseignement/enseignants/enseignant"/>
+            <xs:field xpath="@id"/>
+        </xs:keyref>
+
+        <xs:key name="etudiantKey">
+            <xs:selector xpath="etudiants/etudiant"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+
+        <xs:keyref name="etudiant" refer="etudiantKey">
+            <xs:selector xpath="annee/UE/enseignements/enseignement/etudiants/etudiant"/>
+            <xs:field xpath="@id"/>
+        </xs:keyref>
+
+        <xs:keyref name="etudiant2" refer="etudiantKey">
+            <xs:selector xpath="annee/facultatifs/UE/enseignements/enseignement/etudiants/etudiant"/>
+            <xs:field xpath="@id"/>
+        </xs:keyref>
+
+        <xs:key name="salleKey">
+            <xs:selector xpath="salles/salle"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+
+        <xs:keyref name="salle" refer="salleKey">
+            <xs:selector xpath="annee/UE/enseignements/enseignement/salles/salle"/>
+            <xs:field xpath="@id"/>
+        </xs:keyref>
+
+        <xs:keyref name="salle2" refer="salleKey">
+            <xs:selector xpath="annee/facultatifs/UE/enseignements/enseignement/salles/salle"/>
+            <xs:field xpath="@id"/>
+        </xs:keyref>
+
+    </xs:element>
+
+    <!--Année-->
+    <xs:complexType name="anneeType">
+        <xs:sequence>
+            <xs:element name="UE" type="UEType"/>
+            <xs:element name="stage" type="stageType"/>
+            <xs:element name="responsable" />
+        </xs:sequence>
+        <xs:attribute name="num" type="xs:integer" use="required" />
+    </xs:complexType>
+
+    <!--Liste des enseignants-->
+    <xs:complexType name="enseignantsType">
+        <xs:sequence>
+            <xs:element name="enseignant" type="enseignantType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="etudiantsType">
+        <xs:sequence>
+            <xs:element name="etudiant" type="etudiantType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--Personne, pratique pour les extensions-->
+    <xs:complexType name="personType">
+        <xs:sequence>
+            <xs:element name="etatcivil" type="etatcivilType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!--Étudiant-->
+    <xs:complexType name="etudiantType">
+        <xs:complexContent>
+            <xs:extension base="personType">
+                <xs:sequence>            
+                    <xs:element name="provenance" type="xs:string"/>
+                </xs:sequence>
+                <xs:attribute name="id" type="xs:integer" use="required" />
+                </xs:extension>
+            </xs:complexContent>
+    </xs:complexType>
+    
+    <!--Enseignant-->
+    <xs:complexType name="enseignantType">
+        <xs:complexContent>
+            <xs:extension base="personType">            
+                <xs:attribute name="id" type="xs:integer" use="required" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <!--État civil-->
+    <xs:complexType name="etatcivilType">
+        <xs:sequence>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="prenom" type="xs:string"/>
+            <xs:element name="adresse" type="xs:string"/>
+            <xs:element name="naissance" type="xs:date"/>
+            <xs:element name="email" type="emailAddress"/>
+            <xs:element name="telephone" type="telephoneNumber"/>
+            <xs:element name="codepostal" type="codePostal"/>
+            <xs:element name="infos">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="info" >
+                            <xs:complexType>
+                                <xs:simpleContent>
+                                    <xs:extension base="xs:string">
+                                        <xs:attribute name="nom" type="xs:string" use="required" />
+                                    </xs:extension>
+                                </xs:simpleContent>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!--Unité d'Enseignement-->
+    <xs:complexType name="UEType">
+        <xs:sequence>
+            <xs:element name="facultatifs" type="facultatifsType" />
+            <xs:element name="enseignements" type="enseignementsType"/>         
+        </xs:sequence>
+        <xs:attribute name="numero"></xs:attribute>
+        <xs:attribute name="ects"></xs:attribute>
+    </xs:complexType>
+
+    <!--Stage-->
+    <xs:complexType name="stageType">
+        <xs:sequence>
+            <xs:element name="intitule" type="xs:string" />
+            <xs:element name="responsable" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="duree" type="xs:string"/>
+    </xs:complexType>
+
+    <!--Enseignements facultatifs-->
+    <xs:complexType name="facultatifsType">
+        <xs:sequence>
+            <xs:element name="enseignements" type="enseignementsType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!--Enseignement-->
+    <xs:complexType name="enseignementType">
+        <xs:sequence>
+            <xs:element name="enseignants" type="enseignantsType"/>
+            <xs:element name="etudiants" type="etudiantsType"/>
+            <xs:element name="responsable" type="xs:string"/>
+            <xs:element name="email" type="emailAddress"/>
+            <xs:element name="resume" type="xs:string"/>
+            <xs:element name="salles" type="sallesType"/>
+        </xs:sequence>
+        <xs:attribute name="nom" use="required" type="xs:string"/>
+        <xs:attribute name="duree" use="required"  type="xs:string"/>
+        <xs:attribute name="ects" use="required"  type="xs:decimal"/>
+        <xs:attribute name="premiereseance" use="optional"  type="xs:date"/>
+        <xs:attribute name="derniereseance" use="optional"  type="xs:date"/>
+    </xs:complexType>
+    
+    <!--Liste des enseignements-->
+    <xs:complexType name="enseignementsType">
+        <xs:sequence>
+            <xs:element name="enseignement" type="enseignementType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!--Liste des salles-->
+    <xs:complexType name="sallesType">
+        <xs:sequence>
+            <xs:element name="salle" type="salleType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!--Salle-->
+    <xs:complexType name="salleType">
+        <xs:sequence>
+            <xs:element name="batiment" type="batimentType"/>
+            <xs:element name="numero" type="xs:integer"/>
+            <xs:element name="places" type="xs:integer"/>            
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:integer" use="required" />      
+    </xs:complexType>
+    
+    <!--N° de téléphone-->
+    <xs:simpleType name="telephoneNumber">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="0[0-9]{9}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!--Adresse mail-->
+    <xs:simpleType name="emailAddress"> 
+        <xs:restriction base="xs:string"> 
+          <xs:pattern value="[^@]+@[^\.]+\..+"/> 
+        </xs:restriction> 
+    </xs:simpleType>
+    
+    <!--Code postal-->
+    <xs:simpleType name="codePostal"> 
+        <xs:restriction base="xs:string"> 
+          <xs:pattern value="[0-9]{5}"/> 
+        </xs:restriction> 
+    </xs:simpleType>
+
+    <!--Bâtiment-->
+    <xs:simpleType name="batimentType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="O"/>
+            <xs:enumeration value="E"/>
+            <xs:enumeration value="S"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+</xs:schema>

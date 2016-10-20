@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Arrows and conditions in Visual Turing</TITLE>
+   <META NAME="Author" CONTENT="Cristian Cheran">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY>
+
+<UL>
+<P><FONT SIZE=+1>Arrows and conditions in Visual Turing</FONT></P>
+</UL>
+
+<UL>
+<DD>The arrows in Visual Turing are just like in the original Turing machines.
+They link two instructions. For the ease of the editing, there are two
+kind of arrows: normal arrows - a) linking two different instructions in
+the graph and self arrows which link the instruction to itself. The distinction
+was made because of the different forms of the arrows.</DD>
+</UL>
+
+<CENTER><P><IMG SRC="m_2_1.gif" HEIGHT=169 WIDTH=418><BR>
+<FONT SIZE=-1>The two types of arrows in Visual Turing</FONT></P></CENTER>
+
+<UL>
+<DD>The role played by the arrows is to be paths of execution. At one moment
+of the execution, the program will follow one path or another by choosing
+the arrow with the true condition. A condition is true if the the symbols
+read by the head is equal with one of the symbols or variables from the
+right side of the condition. If that path is chosen, the variable acting
+the left operand - if any - is loaded with that symbol read by the head,
+and the instruction pointed by the arrow becomes the current one.</DD>
+
+<DD>The order of the evaluation of the conditions follows their classification.
+There are normal conditions - like a) with some symbols mentioned in the
+right side, having the maximum priority, loading variables conditions -
+like b) which loads the variables with the symbol read by the head and
+else conditions.- like c) with minimum priority. Note that this order is
+specific to Visual Turing, because it seemed to me to be very natural.</DD>
+</UL>
+
+<CENTER><P><IMG SRC="m_2_2.gif" HEIGHT=263 WIDTH=271><BR>
+<FONT SIZE=-1>Priorities in evaluating the possible paths</FONT></P></CENTER>
+
+</BODY>
+</HTML>

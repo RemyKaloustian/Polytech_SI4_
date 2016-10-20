@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Le repas des philosophes</title>
+<style type="text/css">
+<!--
+.Style1 {color: #FF0000}
+-->
+</style>
+</head>
+
+<body>
+<h1>TD	: Le d&icirc;ner des philosophes - pr&eacute;vention des interblocages </h1>
+
+<strong></strong>
+<p align="left"><strong>Le probl&egrave;me :</strong></p>
+<ul>
+  <li>les processus ex&eacute;cutant des programmes utilisateurs en parall&egrave;le entrent en conflit pour utiliser les ressources critiques telles que les p&eacute;riph&eacute;riques (imprimantes, traceurs, d2rouleurs de bandes, lecteurs/enregistreurs de DVD, etc) mais aussi pour obtenir de l&rsquo;espace m&eacute;moire ou l&rsquo;acc&egrave;s &agrave; un fichier. Pour mettre en &eacute;vidence ce probl&egrave;me nous allons utiliser un autre grand classique : &quot;le diner des philosophe&quot;.</li>
+  <li>5 &eacute;minents philosophes se retrouvent chaque premier mardi du mois dans un lieu tenu encore secret pour d&eacute;guster un plat de spaguetti aux truffres. Chaque mardi, la table est mise &agrave; l'identique : le plat de spaguetti trone au centre de la table, 5 assiettes sont dispos&eacute;s autour de la table et entre chaque assiette une fourchette est mise &agrave; disposition. Comme chacun le sait un philosophe alterne entre deux phases : une phase o&ugrave; il pense et une phase ou il mange. Pour penser, il n'a pas besoin de grand chose, c'est un philosophe. Par contre, pour manger c'est une autre histoire : il doit acqu&eacute;rir une fourchette, puis une autre. D&egrave;s qu'il a fini de manger, il repose sur la table, &agrave; leur place initiale, les deux fourchettes utilis&eacute;e. Comme un philosophe est aussi quelqu'un de poli, il ne se sert que des deux fourchettes dispos&eacute;es de part et d'autres de son assiette.</li>
+</ul>
+<ul>
+  <li>ce probl&egrave;me est strictement identique au contr&ocirc;le de l'acc&egrave;s d'une ressource unique qui doit &ecirc;tre acc&eacute;d&eacute; en mutuelle exclusion,</li>
+  <li>la classe &agrave; modifier est Chopstick contenu dans Chopstick.Java,</li>
+</ul>
+<center>
+  <table border="3">
+    <tbody>
+      <tr>
+        <td><applet align="bottom" height="320" width="300">
+          <param name="CODE" value="Diners.class" />
+          <param name="CODEBASE" value="./" />
+          <param name="ARCHIVE" value="Diners.jar" />
+        </applet></td>
+      </tr>
+    </tbody>
+  </table>
+  </center>
+    <p>
+      Rappel du cours :    </p>
+  <ul>
+  <li> On consid&egrave;re trois phases dans la manipulation d'une  ressource : Requ&ecirc;te -- &gt; Allocation/utilisation --&gt; Lib&eacute;ration</li>
+  <li>Un ressource est dans un des &eacute;tats suivants :
+    <ul>
+      <li>libre : aucun processus ne poss&egrave;de la  ressource</li>
+      <li>occup&eacute; : selon le mode partag&eacute; (la ressource est partageable) ou le mode exclusif (la ressource n'est pas  partageable)</li>
+    </ul>
+  </li>
+  <li>
+    Si la ressource poss&egrave;de les deux modes (partag&eacute; / exclusif) alors la requ&ecirc;te pr&eacute;cise ce mode</li>
+  <li>Tables des conflits pour les ressources possedants 2 modes   <table border="1" cellspacing="0" cellpadding="0">
+    <tr>
+      <td width="119" valign="top"><p align="right">&nbsp;</p></td>
+      <td width="93" valign="top"><p align="center">&eacute;tat = libre</p></td>
+      <td width="93" valign="top"><p align="center">&eacute;tat = occup&eacute; partag&eacute;</p></td>
+      <td width="96" valign="top"><p align="center">&eacute;tat = occup&eacute; exclusif</p></td>
+    </tr>
+    <tr>
+      <td width="119" valign="top"><p align="center">requ&ecirc;te partag&eacute;e</p></td>
+      <td width="93" valign="top"><p align="center">OK</p></td>
+      <td width="93" valign="top"><p align="center">OK</p></td>
+      <td width="96" valign="top"><p align="center">CONFLIT</p></td>
+    </tr>
+    <tr>
+      <td width="119" valign="top"><p align="center">requ&ecirc;te exclusive</p></td>
+      <td width="93" valign="top"><p align="center">OK</p></td>
+      <td width="93" valign="top"><p align="center">CONFLIT</p></td>
+      <td width="96" valign="top"><p align="center">CONFLIT</p></td>
+    </tr>
+</table></li>
+<li>Tables des conflits pour les ressources possedants 1 mode : 
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="119" valign="top"><p align="center">Requ&ecirc;te\Etat</p></td>
+      <td width="93" valign="top"><p align="center">&eacute;tat = libre</p></td>
+      <td width="93" valign="top"><p align="center">&eacute;tat = occup&eacute; </p></td>
+    </tr>
+    <tr>
+      <td width="119" valign="top"><p align="center">demande</p></td>
+      <td width="93" valign="top"><p align="center">OK</p></td>
+      <td width="93" valign="top"><p align="center">CONFLIT</p></td>
+    </tr>
+  </table>
+</li>
+<li>Un conflit d''acc&egrave;s se traduit par une attente d'un  processus d'une ressource poss&eacute;d&eacute;e par un autre. Cette relation peut s'exprimer  par un graphe o&ugrave; les n&oelig;uds sont des processus et les arcs sont &eacute;tiquet&eacute;s par la  ressource &agrave; l'origine du conflit. <span class="Style1">Construisez le graphe des attentes pour votre solution.</span> </li>
+<li>Les familles de solutions vues en cours
+  <ul>
+    <li><strong>Solution par  D&eacute;tection-Gu&eacute;rison :</strong> ces solutions consistent &agrave; d&eacute;tecter la situation  d'interblocage, et &agrave; op&eacute;rer une modification de l'&eacute;tat global du syst&egrave;me pour  rem&eacute;dier au probl&egrave;me. Pour cela, le syst&egrave;me maintient le graphe de d&eacute;pendance. A chaque ajout  dans le graphe, on recherche la pr&eacute;sence d'un cycle. La modification de l'&eacute;tat  du syst&egrave;me consiste &agrave; choisir un processus impliqu&eacute; dans l'interblocage et &agrave;  r&eacute;quisitionner toutes ses ressources. Ce processus red&eacute;marre son ex&eacute;cution au  d&eacute;but. Choix du processus parmi ceux impliqu&eacute;s dans le cycle:
+      <ul>
+        <li>Celui qui a produit le cycle</li>
+        <li>Celui qui bloque le maximum de ressources.  Cette solution a pour objectif de lib&eacute;rer le plus de ressources possibles afin  d'augmenter la concurrence potentielle.</li>
+        <li>Celui qui bloque le moins de ressources.  Cette solution cherche &agrave; minimiser le temps de r&eacute;ex&eacute;cution induit par le retour  &agrave; la case d&eacute;part d'un processus.</li>
+        <li>Celui qui est le plus r&eacute;cent. Cette  solution vise le m&ecirc;me crit&egrave;re de choix que la solution pr&eacute;c&eacute;dente.<br />
+          L'avantage de cette solution est qu'elle n'intervient que  lorsqu'un interblocage se produit. Elle n'op&egrave;re que sur les processus qui sont  directement impliqu&eacute;s dans l'interblocage. Les inconv&eacute;nients de cette m&eacute;thode  sont les surco&ucirc;ts&nbsp; m&eacute;moire et temps CPU  li&eacute;s &agrave; la gestion du graphe.</li>
+        </ul>
+    </li>
+    <li><strong>TimeOut : </strong>cette m&eacute;thode consiste &agrave; r&eacute;aliser le m&ecirc;me fonctionnement que  la m&eacute;thode pr&eacute;c&eacute;dente en &eacute;vitant de construire le graphe de d&eacute;pendance. On  associe &agrave; chaque processus un temps limite d'attente. Le d&eacute;passement de cette  limite est interpr&eacute;t&eacute; comme la participation &agrave; un interblocage. Dans ce cas le  processus est arr&ecirc;t&eacute; et ses ressources sont requisitionn&eacute;es.L'avantage de cette solution est qu'elle supprime la  manipulation du graphe et les surco&ucirc;ts induits. Ses inconv&eacute;nients sont&nbsp; :
+      <ul>
+        <li>Un processus peut &ecirc;tre arr&ecirc;t&eacute; m&ecirc;me s'il n'y  a pas interblocage.</li>
+        <li>Un timeout trop court peut conduire &agrave; une  privation</li>
+        <li>Un timeout trop long d&eacute;grade les  performances du syst&egrave;me.          </li>
+        </ul>
+      </li>
+    <li><strong>Solution par Pr&eacute;vention :</strong> le principe des algorithmes de ce type de solutions est de  garantir que les situations d'interblocage ne peuvent pas se produire.
+      <ul>
+        <li><strong>L'allocation globale :</strong> un processus acquiert l'ensemble de ses ressources simultan&eacute;ement et les lib&egrave;re petit &agrave; petit, d&egrave;s qu'il n'en a plus besoin. Cette solution a l'avantage de ne jamais cr&eacute;er  d'interblocage, et de ne pas n&eacute;cessiter de m&eacute;canisme de retour-arri&egrave;re.</li>
+        <li><strong>L'allocation ordonn&eacute;e :</strong> c'est une adaptation de la solution pr&eacute;c&eacute;dente. Les ressources sont num&eacute;rot&eacute;es et tous les processus les acqui&egrave;rent selon un ordre croissant. D&egrave;s qu'une ressource a &eacute;t&eacute; lib&eacute;r&eacute;e, alors plus aucune allocation n'est possible. Comme la solution pr&eacute;c&eacute;dent, cette solution ne cr&eacute;e jamais d'interblocage.</li>
+        </ul>
+    </li>
+    <li><strong>Solution par Evitement :</strong> ces solutions consistent, sans avoir &agrave; construire le graphe des attentes, &agrave; ne pas construire de cycle. Elles sont bas&eacute;es sur le principe de  l'ordonnancement des processus pour &eacute;viter la constitution de cycle. Les processus sont num&eacute;rot&eacute;s selon un ordre croissant &agrave; l'aide d'une estampille.
+      <ul>
+        <li><strong>Wait or Die :</strong> Le processus qui cr&eacute;e le conflit attend la ressource ou est  arr&ecirc;t&eacute;. Les seules attentes autoris&eacute;es sont celles qui respectent la relation  d'ordre : un vieux processus peut attendre un jeune (i.e. sont num&eacute;ro est plus petit) mais pas l'inverse. Cette relation d'ordre interdit la cr&eacute;ation d'une d&eacute;pendance inverse et  donc de cycle. Cette solution est sans r&eacute;quisition car le processus arr&ecirc;t&eacute; (si  tel est le cas) est le processus &agrave; l'origine de l'arr&ecirc;t. Cet algorithme donne  priorit&eacute; au processus les plus anciens. Un processus arr&ecirc;t&eacute; reprend son  ex&eacute;cution avec la m&ecirc;me estampille, ceci garantit l'absence de privation.<br />
+          <img src="index_clip_image004.gif" alt="b" width="399" height="87" />
+          <pre>if(Stamp(Pd)&lt; Stamp(Pr) {
+ &nbsp;&nbsp;&nbsp;&nbsp; /* Le processus demandeur est plus ancien  que celui qui poss&egrave;de la ressource.
+ &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  Il est mis en attente */
+ &nbsp;&nbsp;&nbsp;&nbsp; Wait(Pd);
+ } else {
+ &nbsp;&nbsp;&nbsp;&nbsp; /* le processus demandeur est plus jeune  que celui qui poss&egrave;de la ressouce.
+ &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  Il est arr&ecirc;t&eacute;. */
+ &nbsp;&nbsp;&nbsp;&nbsp; Stop(Pd);
+ }
+         
+        </pre>
+        </li>
+        <li><strong>Wait or Kill :</strong> Le processus qui cr&eacute;e le conflit attend la ressource ou son  co-relationnaire est arr&ecirc;t&eacute;. Les seules attentes autoris&eacute;es sont celles qui  respectent la relation d'ordre. La relation d'ordre interdit la cr&eacute;ation d'une  d&eacute;pendance inverse et donc de cycle. Cette solution est avec r&eacute;quisition car le  processus arr&ecirc;t&eacute; (si tel est le cas) est le processus co-relationnaire &agrave;  l'origine de l'arr&ecirc;t. Cet algorithme donne priorit&eacute; au processus les plus  anciens. Un processus arr&ecirc;t&eacute; reprend son ex&eacute;cution avec la m&ecirc;me estampille,  ceci garantit l'absence de privation.<br />
+           <img src="index_clip_image006.gif" alt="c" width="399" height="87" />
+		   <pre>if(Stamp(Pd)&gt;Stamp(Pr) {
+ &nbsp;&nbsp;&nbsp;&nbsp; /* Le processus demandeur est plus jeune  que celui qui poss&egrave;de la ressource.
+ &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  Il est mis en attente */
+ &nbsp;&nbsp;&nbsp;&nbsp; Wait(Pd);
+ } else {
+ &nbsp;&nbsp;&nbsp;&nbsp; /* le processus demandeur est plus jeune  que celui qui poss&egrave;de la ressouce.
+ &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  Il est arr&ecirc;t&eacute;. */
+ &nbsp;&nbsp;&nbsp;&nbsp; Stop(Pr);
+ }
+ </pre>
+ </blockquote>             
+          </li>
+        <li>Wound/Wait : Les deux solutions pr&eacute;c&eacute;dentes consid&egrave;rent qu'il y a  cr&eacute;ation d'un cycle d&egrave;s que l'on essaie d'&eacute;tablir une d&eacute;pendance &agrave; contrario de  la relation d'ordre. Ceci est tr&egrave;s fort car il ne peut y avoir cycle que si  l'&eacute;l&eacute;ment consid&eacute;r&eacute; est en relation avec deux voisins. Pour &eacute;viter que les  processus ne soient arr&ecirc;t&eacute;s pr&eacute;matur&eacute; on introduit par rapport &agrave; la seconde  solution un &eacute;tat suppl&eacute;mentaire (bless&eacute;) qui caract&eacute;rise une situation  transitoire o&ugrave; le processus a d&eacute;j&agrave; &eacute;t&eacute; impliqu&eacute; dans un conflit sans attente (  un processus est en attente sur lui). On donne une chance suppl&eacute;mentaire aux  processus impliqu&eacute;s dans cette d&eacute;pendance en attendant un conflit ult&eacute;rieur les  concernant.<br />
+            <img src="index_clip_image006_0000.gif" alt="d" width="399" height="87" /><br />
+            <pre>if(Stamp(Pd)&gt;Stamp(Pr) {
+&nbsp;&nbsp;&nbsp;&nbsp; /* Le processus Pd&nbsp;est plus jeune que Pr&nbsp;*/
+&nbsp;&nbsp;&nbsp;&nbsp; if(Wounded(Fd)) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* lPd&nbsp;est d&eacute;j&agrave; impliqu&eacute; dans une dependance &agrave;  contrario, il est arr&ecirc;t&eacute;. */
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stop(Pd);
+&nbsp;&nbsp;&nbsp;&nbsp; } else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* Pd&nbsp;n'intervient que dans des conflits conforment  &agrave; la relation d'ordre&nbsp; */
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wait(Fd);
+&nbsp;&nbsp;&nbsp;&nbsp; }
+} else {
+&nbsp;&nbsp;&nbsp;&nbsp; /* le processus Pd&nbsp;est plus ancien que Pr. */
+&nbsp;&nbsp;&nbsp;&nbsp; if(Waiting(Fr)){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* Pr&nbsp;est d&egrave;j&agrave; impliqu&eacute; dans une d&eacute;pendance &agrave;  contrario. Il est arr&ecirc;t&eacute;. */
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stop(Pr);
+&nbsp;&nbsp;&nbsp;&nbsp; } else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /* Pr&nbsp;n'intervient pas dans un autre conflit, 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; on introduit une d&eacute;pendance &agrave;  contrario en le marquant bless&eacute;, Pd&nbsp;attend.  */
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wound(Pr);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Wait(Pd);
+&nbsp;&nbsp;&nbsp;&nbsp; }
+}</pre>
+          </li>
+        </ul>
+      </li>
+    </ul>
+</li>
+<li><strong>Conclusion</strong> : toutes les m&eacute;thodes, &agrave; l'exception des m&eacute;thodes de  pr&eacute;vention, n&eacute;cessitent un retour-arri&egrave;re pour sortir d'une situation  d'interblocage. La mise en &oelig;uvre du retour-arri&egrave;re est complexe et n&eacute;cessite  que soit enregistr&eacute; l'&eacute;tat global du processus au point de retour, et que  d'autre part il soit possible d'annuler les effets des actions que le processus  a r&eacute;alis&eacute;es jusqu'&agrave; l'arr&ecirc;t de celui-ci.
+    </center>
+</li>
+</ul>
+
+<p><strong>ATTENTION :</strong> en programmation concurrente, il existe un autre mal, tout aussi   n&eacute;faste aux applications : la famine. Un processus, ne peut jamais acc&eacute;der &agrave; une   ressource qu'il attend pour poursuivre son ex&eacute;cution. Dans le cas des   philosophes ceci se traduit par le fait qu'un des deux philosophes ne peut pas   acqu&eacute;rir les deux fourchettes, parce que les autres philosophes se sont li&eacute;s   contre lui (cohalition).</p>
+</body>
+</html>

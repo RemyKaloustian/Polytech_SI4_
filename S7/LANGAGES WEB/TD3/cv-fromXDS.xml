@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<cv xxmlns="http://www.w3schools.com"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="CV(1).xsd">
+    <!--Problème général, les complexType n'ont pas de nom de type et ne sont donc pas réutilisables-->
+    
+    <!-- Problème, on est dans une séquence, le cv peut donc avoir plusieurs titres et noms, il faudrait ajouter maxOccurs = 1-->
+    
+    <titre>Titre1</titre>
+    <cvnom>Nom1</cvnom>
+
+    <titre>Titre2</titre>
+    <cvnom>Nom2</cvnom>
+    <etatcvivil>
+        <nom>babar</nom>
+        <prenom>Winnie</prenom>
+        <!--Problème, on peut mettre n'importe quelle string en naissance, il aurait fallu ajouter des restrictions ou utiliser un type date-->
+        <naissance>en été</naissance>
+       <!--Problème, il faudrait limiter les choix pour la situation, ici, on peut mettre n'importe quelle string-->
+        <situation>Drle de situation</situation>       
+    </etatcvivil>
+    
+    <formations>
+        <!--Pourquoi mettre seulement la description en attribut ? léger problème de cohérence...-->
+        <formation description="Apprentissage de choses">
+            <!--On pourrait rajouter certains options comme facultatives, date-iso par exemple-->
+            <date-iso>18-02-2015</date-iso>
+            <date>18/02/2015</date>
+            <datefin>19/02/2015</datefin>
+            <intitulé>Super formation</intitulé>
+        </formation>
+        <formation description="Apprentissage d'autres choses">
+            <!--On pourrait rajouter certains options comme facultatives, date-iso par exemple-->
+            <date-iso>18-02-2015</date-iso>
+            <date>18/02/2015</date>
+            <datefin>19/02/2015</datefin>
+            <intitulé>Super formation</intitulé>
+        </formation>
+    </formations>
+
+    <connaissances>
+        <!--On pourrait rajouter des minOccurs pour le nombre de techniques ou les formations pour assurer un CV complet et cohérent-->
+        <technique>
+            <type>Programmation</type>
+            <nom>C#</nom>
+            <description>Programmation en C#</description>
+        </technique>        
+    </connaissances>
+
+    <langue><!--Rajouter un minOccurs de 1, on parle forcément une langue-->
+        <nom>Anglais</nom>
+        <niveau>Bon (A2)</niveau>
+    </langue>
+
+    <professionnel>
+        <!--Problème, el manque de restriction sur les dates permet d'écrire n'importe quelle string et de faire des fautes-->
+        <experience date-iso="15-06-2014" date="Le treize octobre de deux millllllllle vingt" datefin="16/06/2014" client="EDF" entreprise="GDF" fonction="distri" > <!--On pourrait rajouter mixed="true" pour ajouter un petit paragraphe donnant plus détails, peut-être sur lec ompétences développées. -->
+            <missions>
+                <mission>Travailler dur</mission>
+                <mission>Travailler plus</mission>
+            </missions>
+            <environnement>
+                <!--Le minOccurs="0" pour les techniques n'est pas nécessaires, étant donné qu'on est dans une séquence, il y aura 0 ou plus éléments enfants, le minOccurs="0" ajoute de la redondance-->
+                <technique>
+                    <!--Problème, on peut avoir une technique vide car les attributs sont optionnels. De plus pour les techniques dans environnement, les champs sont des attributs optionnels, alors qu'ils étaient des enfants obligatoires pour les techniques de connaissances. cela montre un problème de conception.  -->
+                </technique>                
+            </environnement>
+        </experience>        
+    </professionnel>    
+</cv>

@@ -1,0 +1,34 @@
+The blank symbol is the default one in the Turing Machine. It is like a background, the other symbols being foreground.
+The editor has multiple levels of undo. You can undo almost every move of yours - except breathing, thinking or other unimportant things -. Choose the Undo.. option from the Edit menu or the active machine's context menu
+You can fix the arrows using the context menu - the "Fix this arrow" option.
+You can change the arrow condition by going to the Properties and working with the those buttons : "Left operand" to change the left operand which can be a variable or nothing "Right operand" to change the right operands which can be symbols and/or vars.
+The Turing Machine inspired theoretically the creation of the first computer.
+You can assign a nickname to every symbol you use. There is an edit box in the symbol's properties dialog where you can modify the nickname. 
+You can use the mouse for multiple selections on the tape. You can also click the right button on a position to get a context menu where you can change the selection's contents or move the head.
+One of the applications of the Turing Machine is the formal laguanges decidablity.
+Every machine needs a start instruction. The first instruction inserted is made by default the start instruction, but you can change it by selecting Start instruction from the desired instruction's context menu.
+There are some approaches to jump over the boundaries of the computability.
+You can't use the most of the edit commands while the program is running.
+Every object has a properties dialog. You can activate it by double-clicking the object for the instructions and arrows or by selecting Properties from the context menu.
+You can change the contents of an instruction after you inserted. Use the Contents button in the instruction properties dialog to do this.
+When you run in the debug mode, you see every move of the program.
+You can change the speed of the program even during the execution using the Machine speed menu from the Run menu.
+You can use the keys to edit the tape : arrows for navigating, with SHIFT pressed for multiple selections or not, ENTER for setting the head and the alphanumeric keys to change the value of the selected positions.
+When you delete a variable or a symbol, the coresponding instructions will become red wrong instructions and the deleted element will appear painted in red in the conditions on the arrows.
+The Turing Machine program can be described in other forms, automata alike. This language implemented in this program is nearer by the programming languages and is easier to understand, that's why is generally used for Turing programming.
+You can make multiple selections both in the editor and in the machine.
+The original Turing Machine has a tape infinite at the right side
+If the Turing program reach a machine without start instruction, the execution stops.
+You can step back the execution of a Turing program but this option is available just in the debug mode.
+You can see the tape as the singe row - use the option View single row in the Machine menu or dispolayed on multiple rows - use the option View multiple rows in the same menu
+You can change the machine's name using its properties dialog.
+You can watch the variables in a window appearing in the debug mode under the program's treeview.
+You can get context menu for any machine, variable, symbol, instruction or arrow by flying over it and clicking the right button.
+The creator of the Turing Machine was the British mathematician Alan Turing.
+You can see the trace of the execution watching the red down arrow which points to the current instruction and the little red arrow which points the execution path.
+You can use the ENTER key to change the postion of the head.
+You can't change the tape or loading another one while running.
+The execution stops if the Turing program wants to write a variable without value, announcing this.
+The execution stops if the head goes beyod the limits. You can say that the Machine "hangs".
+You can use breakpoints on instructions. With the properties dialog of the instruction or the context menu you can toggle breakpoint. The execution stops on a breakpoint just in the debug mode.
+There is a mathematical thesis, Church's Thesis, which states that every computational machine is equivalent to a Turing Machine. That's why, the Turing Machine is a boundary of the computability.

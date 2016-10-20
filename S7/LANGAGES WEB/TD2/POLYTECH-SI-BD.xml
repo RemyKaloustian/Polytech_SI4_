@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<polytech>
+    <etudiants>
+        <etudiant>
+            <etatcivil></etatcivil>
+            <provenance></provenance>
+        </etudiant>
+    </etudiants>
+    <enseignants>
+        <enseignant id="">
+            <etatcivil>
+                <nom></nom>
+                <prenom></prenom>
+                <adresse></adresse>
+                <naissance></naissance>
+                <email></email>
+                <telephone></telephone>
+                <infos>
+                    <info nom=""></info>
+                </infos>
+            </etatcivil>
+        </enseignant>
+    </enseignants>
+    <annee num="5">
+        <UE>
+            <facultatifs>
+                <enseignements></enseignements>
+            </facultatifs>
+            <enseignements>
+                <enseignement>
+                    <enseignants>
+                        <enseignant id=""></enseignant>
+                    </enseignants>
+                    <durée></durée>
+                    <premiereseance></premiereseance>
+                    <derniereseance></derniereseance>
+                    <etudiants>
+                        <etudiant id=""></etudiant>
+                    </etudiants>
+                    <responsable></responsable>
+                    <email></email>
+                    <resume></resume>
+                    <ects></ects>
+                    <salles>
+                        <salle id=""></salle>
+                    </salles>
+                </enseignement>
+            </enseignements>
+            <numero></numero>
+            <ects></ects>
+        </UE>
+        <etudiants>
+            <etudiant id=""></etudiant>
+        </etudiants>
+        <stage>
+            <intitule></intitule>
+            <durée></durée>
+            <responsable></responsable>
+        </stage>
+        <responsable></responsable>
+    </annee>
+</polytech>

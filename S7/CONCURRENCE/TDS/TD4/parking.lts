@@ -1,0 +1,28 @@
+A =(arrive->A).
+D=(depart->D).
+
+const N = 4
+
+
+
+CTRL=(arrive->CTRL|depart->CTRL).
+CTRL1=NB[N],NB[i:0..N] = ( when(i>0) arrive->NB[i-1] 
+							| when(i<N) depart->NB[i+1]).
+//compter le nb de voitures dans parking
+VALIDEUR=NB[0],
+NB[i:0..N] = (  when(i<N)  arrive->NB[i+1]
+				|when(i>0) depart->NB[i-1]
+				|when(i>=N) arrive->ERROR
+				|when(i<=0) depart->ERROR).
+
+property VALIDEUR2=NB[0],
+NB[i:0..N] = (  when(i<N)  arrive->NB[i+1]
+				|when(i>0) depart->NB[i-1]
+				).
+
+||S = (A||D||CTRL).
+||S1=(A||D||CTRL1).
+
+||P= (S||VALIDEUR).
+||P2= (S||VALIDEUR2).
+||P3=  (VALIDEUR ||S1).

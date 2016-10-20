@@ -1,0 +1,4 @@
+
+TRANSFORM = (lire[i:0..9]-> T[i]),
+T[j:0..9] = (when(j>1)affiche[j%2]-> T[j/2]
+			| when(j<=1)affiche[j%2]-> TRANSFORM).
