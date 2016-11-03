@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="Polytech.xsl"?>
+
+<polytech>
+    <salles>
+        <salle id="1">
+            <batiment>O</batiment>
+            <numero>310</numero>
+            <places>34</places>
+        </salle>
+        <salle id="2">
+            <batiment>O</batiment>
+            <numero>-110</numero>
+            <places>25</places>
+        </salle>
+        <salle id="3">
+            <batiment>E</batiment>
+            <numero>-132</numero>
+            <places>10</places>
+        </salle>
+    </salles>
+    <etudiants>
+        <etudiant id="1">
+            <etatcivil>
+                <nom>Raybaud</nom>
+                <prenom>Vincent</prenom>
+                <adresse>42 rue de la vie</adresse>
+                <naissance>2000-01-01</naissance>
+                <email>lololo@gmail.com</email>
+                <telephone>0666666666</telephone>
+                <codepostal>07777</codepostal>
+                <infos>
+                    <info nom="Beau">Il est beau gosse</info>
+                    <info nom="Intelligent">Il est intelligent</info>
+                </infos>
+            </etatcivil>
+            <provenance>Pennsylvanie</provenance>
+        </etudiant>
+        <etudiant id="2">
+            <etatcivil>
+                <nom>Kalouquelquechose</nom>
+                <prenom>Rémy</prenom>
+                <adresse>42 rue de la vie</adresse>
+                <naissance>2010-01-01</naissance>
+                <email>lalala@gmail.com</email>
+                <telephone>0777777777</telephone>
+                <codepostal>07777</codepostal>
+                <infos>
+                    <info nom="Chauve">Il est chauve</info>
+                    <info nom="Roux">Il est roux</info>
+                    <info nom="Binoclard">Il a des lunettes</info>
+                </infos>
+            </etatcivil>
+            <provenance>Pennsylvanie</provenance>
+        </etudiant>
+    </etudiants>
+    <enseignants>
+        <enseignant id="1">
+            <etatcivil>
+                <nom>Galan</nom>
+                <prenom>Claude</prenom>
+                <adresse>???</adresse>
+                <naissance>1960-01-01</naissance>
+                <email>claudegalan@gmail.com</email>
+                <telephone>0000000001</telephone>
+                <codepostal>00001</codepostal>
+                <infos>
+                    <info nom="Entreprise">C'est un prof de gestion d'entreprise</info>
+                    <info nom="RespoSi3">Il est le responsable des si3</info>
+                </infos>
+            </etatcivil>
+        </enseignant>
+        <enseignant id="2">
+            <etatcivil>
+                <nom>Gomez</nom>
+                <prenom>Laurent</prenom>
+                <adresse>80 rue de la octante</adresse>
+                <naissance>1960-01-01</naissance>
+                <email>laurent.gomez@sap.com</email>
+                <telephone>0000000001</telephone>
+                <codepostal>00001</codepostal>
+                <infos>
+                    <info nom="RespoSmartCards">Il est le responsable de l'enseignement Smart Cards</info>
+                </infos>
+            </etatcivil>
+        </enseignant>
+        <enseignant id="3">
+            <etatcivil>
+                <nom>Liquori</nom>
+                <prenom>Luigi</prenom>
+                <adresse>42 rue de la pizza</adresse>
+                <naissance>1960-01-01</naissance>
+                <email>Luigi.Liquori@inria.fr</email>
+                <telephone>0000000001</telephone>
+                <codepostal>00001</codepostal>
+                <infos>
+                    <info nom="RespoPeer2peer">Il est le responsable de l'enseigment Peer to Peer</info>
+                </infos>
+            </etatcivil>
+        </enseignant>
+    </enseignants>
+	<annees>
+		<annee num="5">
+			<UEs>
+				<UE numero="2" ects="9">
+					<enseignements>
+						<enseignement nom="Smart Cards" duree="28h" ects="2.00" facultatif="oui">
+							<enseignants>
+								<enseignant id="2"/>
+							</enseignants>
+							<etudiants>
+								<etudiant id="1" />
+								<etudiant id="2"/>
+							</etudiants>
+							<responsable>Laurent Gomez</responsable>
+							<email>laurent.gomez@sap.com</email>
+							<resume>Ce cours a lieu le jeudi matin</resume>
+							<salles>
+								<salle id="1"/>
+								<salle id="2"/>
+							</salles>
+						</enseignement>
+						<enseignement nom="Peer to peer" duree="28h" ects="2.00">
+							<enseignants>
+								<enseignant id="3"/>
+							</enseignants>
+							<etudiants>
+								<etudiant id="1"/>
+							</etudiants>
+							<responsable>Luigi Liquori</responsable>
+							<email>Luigi.Liquori@inria.fr</email>
+							<resume>Since the early days of the internet, [...] , an area related to networking.</resume>
+							<salles>
+								<salle id="3"/>
+							</salles>
+						</enseignement>
+					</enseignements>
+				</UE>
+				<UE numero="3" ects="9">
+					<enseignements>
+						<enseignement>
+							<enseignants>
+							</enseignants>
+							<etudiants>
+							</etudiants>
+							<responsable></responsable>
+							<email></email>
+							<resume></resume>
+							<salles>
+								<salle id="1"/>
+								<salle id="3"/>
+							</salles>
+						</enseignement>
+					</enseignements>
+				</UE>
+			</UEs>
+			<stage duree="6 mois">
+				<intitule>Stage de fin de parcours</intitule>
+				<responsable>Claude Galan</responsable>
+			</stage>
+			<responsable />
+		</annee>
+	</annees>	
+</polytech>

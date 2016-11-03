@@ -1,0 +1,26 @@
+const       False = 0
+const       True = 1
+range       Bool = False..True
+const       Nread = 2 // Maximum readers
+const       Nwrite= 2 // Maximum writers
+
+
+set Actions = {acquireRead,releaseRead,requestRead,acquireWrite,releaseWrite,requestWrite}
+
+READER = (acquireRead->examine->releaseRead->READER)
+         +Actions
+         \{examine}.
+
+WRITER = (acquireWrite->modify->releaseWrite->WRITER)
+         +Actions
+         \{modify}.
+CTRL= CTRL[0][0]
+CTRL[l:0..N][e:0..N] = (when (e+l+w == 0) acquireWrite->CTRL[l][e+1][][rw-1]
+| when(e + rw = m)acquireR->CTRL[l+1][e][rl-1][]
+|releaseW->CTRL[l][
+
+RW_LOCK_UNSAFE = CTRL.
+
+
+||ReadWriteUnsafe = ({a, b}:READER || {c,d}:WRITER || {a,b,c,d}::RW_LOCK_UNSAFE).
+
